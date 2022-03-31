@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     headerText: {
+        color: '#333',
         fontSize: 20,
         fontWeight: '600'
     }

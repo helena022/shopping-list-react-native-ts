@@ -21,9 +21,11 @@ const styles = StyleSheet.create({
         borderBottomColor: 'rgba(0, 0, 0, 0.2)',
     },
     itemName: {
+        color: '#333',
         fontWeight: '500',
       },
     itemQuantity: {
+        color: '#333',
         padding: 6,
         borderWidth: 1,
         borderColor: 'rgba(0, 0, 0, 0.2)',

@@ -4,17 +4,38 @@ import {
     Text,
     TextInput,
     TouchableOpacity,
-    StyleSheet
+    StyleSheet, 
+    Alert
 } from 'react-native'
 
 export interface Item {
-    item: string,
-    quantity: string,
+    item: string;
+    quantity: string;
 }
 
-const AddItem = () => {
+interface Props {
+    setShoppingList: React.Dispatch<React.SetStateAction<Item[]>>;
+    shoppingList: Item[];    
+}
+
+const AddItem: React.FC<Props> = ({shoppingList, setShoppingList}) => {
     const [item, setItem] = useState('');
     const [quantity, setQuantity] = useState('');
+    const addItem = () => {
+        if (!item){
+            Alert.alert('No item!', 'You need to enter an item')
+        } else {
+            setShoppingList([
+                ...shoppingList,
+                {
+                    item,
+                    quantity: quantity || '1',
+                },
+            ]);
+            setItem('');
+            setQuantity('');
+        }
+    };
     return (
         <View>
             <Text style={styles.heading}>Add Shopping Item</Text>
@@ -36,7 +57,7 @@ const AddItem = () => {
                 />
                 <TouchableOpacity 
                     style={styles.addItemButton}
-                    onPress={() => {}}
+                    onPress={addItem}
                 >
                     <Text style={styles.buttonText}>Add Item</Text>
                 </TouchableOpacity>
